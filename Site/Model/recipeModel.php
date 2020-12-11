@@ -15,7 +15,7 @@
  
 
  /**
-  * FIXME: Class RecipeModel esxiste déjà selon code erreur et ne peut pas être instanciée
+  * FIXME: Class RecipeModel existe déjà selon code erreur et ne peut pas être instanciée
   */
 class RecipeModel extends Database {
 
