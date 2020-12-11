@@ -65,7 +65,6 @@ class MainController {
 
         include(dirname(__FILE__) . '/View/head.html');
         include(dirname(__FILE__) . '/View/menu.html');
-        include(dirname(__FILE__) . '/View/header.php');
         echo $content;
         include(dirname(__FILE__) . '/View/footer.html');
     }
