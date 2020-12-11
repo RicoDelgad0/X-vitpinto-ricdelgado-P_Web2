@@ -136,8 +136,14 @@ class RecipeModel extends Database {
         $this->unsetData($req);
     }
 
-    public function latestRecipes() {
+    public function getLatestRecipes() {
+        $query = "SELECT * FROM t_recipes ORDER BY IdRecettes DESC";
 
+        $req = $this->queryPrepareExecute($query, null);
+
+        $recipes = $this->formData($req);
+
+        return $recipes;
     }
 }
 ?>
