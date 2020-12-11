@@ -4,6 +4,7 @@ include '/Controller/recipeController.php';
 $database = new recipeController();
 
 $recipes = $database->allRecipesAction();
+
 ?>
 <header class="d-flex p-2 flex-column mt-5">
         <h1 class="display-4 text-danger align-self-center">Recettes</h1>
@@ -43,7 +44,7 @@ $recipes = $database->allRecipesAction();
             echo '<div class="card-body">';
             echo '<h4 class="card-title">' . $recipe['recName'] . '</h4>';
             echo '<p class="card-text">' . $recipe['recIngredients'] . '</p>';
-            echo '<a href="details.php?idRecettes=' . $recipe['idRecipes'] . '"class="btn btn-primary">Détails</a>';
+            echo '<a href="details.php?idRecipes=' . $recipe['idRecipes'] . '"class="btn btn-primary">Détails</a>';
             echo '</div>';
             echo '</div>';
         } 
