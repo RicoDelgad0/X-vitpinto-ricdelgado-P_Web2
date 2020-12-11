@@ -22,7 +22,7 @@ class Database {
      *
      * @return void
      */
-    public function _construct() {
+    public function __construct() {
 
         $user = $GLOBALS["CONFIG"]["database"]["userName"];
         $pass = $GLOBALS["CONFIG"]["database"]["password"];
@@ -39,5 +39,33 @@ class Database {
             echo 'Cheeh !! Connexion échouée';
         }
     }
+
+
+    protected function queryPrepareExecute($query, $binds) {
+        $req = $this->connector->prepare($query);
+
+        if($binds != null) {
+            foreach($binds as $bind) {
+                $req->bindValue($bind['ref'], $bind['var'], $bind['type']);
+            }
+        }
+
+        $req->execute();
+
+        return $req;
+    }
+
+    protected function unsetData($req) {
+        
+    }
+
+    protected function formData($req) {
+        $recipes = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        return $recipes;
+    }
+
+
+
 }
 ?>
