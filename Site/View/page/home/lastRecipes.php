@@ -47,7 +47,7 @@
       </div>
   </a>
   </div>
-  <a href="recipes.php" class="link">
+  <a href="/Site/View/recipes.php" class="link">
     <div class="card" style="width: 20rem;">
       <!-- Div qui sert de lien vers la page avec toutes les recettes du site -->
       <img src="../images/cake.jpg" class="card-img-top" alt="...">
