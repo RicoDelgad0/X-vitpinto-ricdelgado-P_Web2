@@ -1,3 +1,17 @@
+<div class="d-flex justify-content-center mt-5">
+    <h1 id="indexTitle" class="font-weight-bold display-1">El Letche</h1> <!-- Titre du site -->
+</div>
+
+<div id="homePageText" class="d-flex mt-4 container-md">
+    <!-- Présentation du site internet -->
+    <h4>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis fugit, enim molestiae praesentium eveniet,
+        recusandae et error beatae facilis ex harum consequuntur, quia pariatur non. Doloribus illo, ullam blanditiis ab.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis fugit, enim molestiae praesentium eveniet,
+        recusandae et error beatae facilis ex harum consequuntur, quia pariatur non. Doloribus illo, ullam blanditiis ab.
+    </h4>
+</div>
+  
   <!-- Cartes avec les dernières recette + lien vers toutes les recettes -->
   <div id="indexRecipiesContentor" class="d-flex flex-row justify-content-around m-5">
     <div class="card-deck mt-5 text-center">
