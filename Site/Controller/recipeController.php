@@ -11,12 +11,12 @@ class RecipeController extends MasterController {
         return call_user_func(array($this, $action));
     }
 
-    private function allRecipesAction() {
+    public function allRecipesAction() {
 
         $recipeList = new recipeModel();
         $recipes = $recipeList->getAllRecipes();
 
-        $view = file_get_contents('/View/page/recipes/list.php');
+        $view = file_get_contents('../View/page/recipes/list.php');
 
         ob_start();
         eval('?>' . $view);
@@ -25,7 +25,7 @@ class RecipeController extends MasterController {
         return $content;
     }
 
-    private function oneRecipeAction() {
+    public function oneRecipeAction() {
 
         $recipeList = new recipeModel();
         $recipe = $recipeList->getOneRecipe($_GET['id']);
