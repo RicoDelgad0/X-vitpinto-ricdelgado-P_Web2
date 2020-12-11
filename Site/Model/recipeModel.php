@@ -21,7 +21,7 @@ class RecipeModel extends Database {
 
     private function queryPrepareExecute($query, $binds) {
         $connector = new DataBase();
-        $req = $this->connector->prepare($query);
+        $req = $connector->prepare($query);
 
         if($binds != null) {
             foreach($binds as $bind) {
@@ -137,7 +137,7 @@ class RecipeModel extends Database {
     }
 
     public function getLatestRecipes() {
-        $query = "SELECT * FROM t_recipes ORDER BY IdRecettes DESC";
+        $query = "SELECT * FROM t_recipes ORDER BY IdRecettes DESC LIMIT 5";
 
         $req = $this->queryPrepareExecute($query, null);
 

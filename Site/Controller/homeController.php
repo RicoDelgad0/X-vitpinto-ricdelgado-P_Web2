@@ -13,7 +13,7 @@ class HomeController extends MasterController {
 
     private function lastRecipesAction() {
         $catchRecipes = new RecipeModel();
-        $recipes = $catchRecipes->latestRecipes();
+        $recipes = $catchRecipes->getLatestRecipes();
 
         $view = file_get_contents('View/page/home/lastRecipes.php');
     
