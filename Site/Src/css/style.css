@@ -1,0 +1,65 @@
+/* TODO: Organiser les styles par pages, par éléments modifié, etc*/
+ 
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: black;
+    opacity: 0.65;
+}
+
+.wlink {
+    text-decoration: none;
+    color: white;
+}
+
+.wlink:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 0.85;
+}
+
+i {
+    font-size: 30px;
+    padding: 5px;
+}
+
+.navigation {
+    background-color: #943B19;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+}
+
+footer {
+    background-color: #323C46;
+    width: 100%;
+    color: white;
+    position: fixed;
+    bottom: 0;
+}   
+
+.contactForm {
+    width: 60%;
+}
+
+.contactFormContainer {
+    width: 100%;
+}
+
+.descriptionFormContainer {
+    text-align: center;
+}
+
+.descriptionForm {
+    width:50%;
+}
+
+.box{
+    height: 100% !important;
+}
+
+
