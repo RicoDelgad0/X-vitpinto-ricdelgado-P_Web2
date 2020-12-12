@@ -21,12 +21,12 @@ class MainController {
      */
     public function dispatch() {
 
-        if(!isset($_GET['MasterController'])) {
-            $_GET['MasterController'] = 'home';
+        if(!isset($_GET['controller'])) {
+            $_GET['controller'] = 'home';
             $_GET['action'] = 'lastRecipes';
         }
 
-        $currentLink = $this->menuSelected($_GET['MasterController']);
+        $currentLink = $this->menuSelected($_GET['controller']);
         $this->viewBuild($currentLink);
     }
 
@@ -36,7 +36,7 @@ class MainController {
      */
     protected function menuSelected() {
 
-        switch($_GET['MasterController']) {
+        switch($_GET['controller']) {
             case 'home':
                 $link = new HomeController();
                 break;
