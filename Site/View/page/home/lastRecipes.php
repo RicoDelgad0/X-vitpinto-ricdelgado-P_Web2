@@ -1,3 +1,13 @@
+<!--
+    Auteur: Vitor Silva & Ricardo Delgado
+    Date: 11.12.2020
+    Description : Contenu de la page d'acceuil
+-->
+
+
+<!-- TODO: Faire en sorte de récupérer les 3 ou 4 dernières recettes avec un foreach de manière automatique -->
+<!-- TODO: Ajouter des commentaires -->
+
 <div class="d-flex justify-content-center mt-5">
     <h1 id="indexTitle" class="font-weight-bold display-1">El Letche</h1> <!-- Titre du site -->
 </div>
@@ -61,7 +71,7 @@
       </div>
   </a>
   </div>
-  <a href="/Site/View/recipes.php" class="link">
+  <a href="index.php?controller=recipes&action=allRecipes" class="link">
     <div class="card" style="width: 20rem;">
       <!-- Div qui sert de lien vers la page avec toutes les recettes du site -->
       <img src="../images/cake.jpg" class="card-img-top" alt="...">

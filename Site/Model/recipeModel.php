@@ -14,9 +14,6 @@
  include_once('database.php');
  
 
- /**
-  * FIXME: Class RecipeModel existe déjà selon code erreur et ne peut pas être instanciée
-  */
 class RecipeModel extends Database {
 
     public function getAllRecipes() {
