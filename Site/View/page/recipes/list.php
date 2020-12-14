@@ -1,3 +1,8 @@
+<!--
+    Auteur: Vitor Silva & Ricardo Delgado
+    Date: 11.12.2020
+    Description : Contenu différent à afficher dans la page recettes
+-->
 <div class="d-flex flex-row flex-wrap justify-content-around"> <!-- Div qui contient carte avec présentation d'une recette-->
         <?php
         foreach ($allRecipes as $recipe) {

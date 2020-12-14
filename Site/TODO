@@ -1,0 +1,13 @@
+TODO:
+
+1. Redimensionner les images
+2. Ajouter des commentaires sur les pages (je peux m'occuper du MVC --vitor)
+3. On devrait pouvoir finir les pages d'ajout de recettes (les rendre fonctionelles) et de création de compte
+4. Les recettes sur la première page devraient d'afficher de manière dynamique (tu t'occupe des queries ?)
+5. La page recettes est grave cheum ( my fault --vitor)
+6. Il faudrait revoir la mise en page de la page détails (je fini le boulot or not ?)
+7. Correction de la mise en page de ce qui a été mis en MVC (espaces entre les éléments pas super ouf)
+
+
+ps: J'ai rajouté des TODO et des FIXME sur les pages pour avoir un aperçu direct de ce qu'il faudrait faire,
+    mais il n'y a pas tout donc sorry -
