@@ -14,35 +14,7 @@
  include_once('database.php');
  
 
- /**
-  * FIXME: Class RecipeModel existe déjà selon code erreur et ne peut pas être instanciée
-  */
 class RecipeModel extends Database {
-
-    private function queryPrepareExecute($query, $binds) {
-        $connector = new DataBase();
-        $req = $connector->prepare($query);
-
-        if($binds != null) {
-            foreach($binds as $bind) {
-                $req->bindValue($bind['ref'], $bind['var'], $bind['type']);
-            }
-        }
-
-        $req->execute();
-
-        return $req;
-    }
-
-    private function unsetData($req) {
-        
-    }
-
-    private function formData($req) {
-        $recipes = $req->fetchAll(PDO::FETCH_ASSOC);
-
-        return $recipes;
-    }
 
     public function getAllRecipes() {
         $query = "SELECT * FROM t_recipes";
@@ -137,7 +109,7 @@ class RecipeModel extends Database {
     }
 
     public function getLatestRecipes() {
-        $query = "SELECT * FROM t_recipes ORDER BY IdRecettes DESC LIMIT 5";
+        $query = "SELECT * FROM t_recipes ORDER BY IdRecipes DESC";
 
         $req = $this->queryPrepareExecute($query, null);
 
