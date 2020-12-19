@@ -51,7 +51,7 @@ class MainController {
                 break;
             default:
                 $link = new HomeController();
-                break; 
+                break;
         }
 
         return $link;
