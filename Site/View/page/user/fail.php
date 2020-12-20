@@ -9,7 +9,9 @@
             <?php
             foreach($errors as $error) {
                 if(!empty($error)) {
-                    echo '<li><spann class="text-danger">' . $error . '</spann></li>';
+                    echo '<div class="form-group">';
+                    echo '<li class="list-unstyled ml-3 mt-3"><spann class="text-danger">' . $error . '</spann></li>';
+                    echo '</div>';
                 }
             }
             ?>

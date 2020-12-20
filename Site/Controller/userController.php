@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Auteur : Vitor Silva & Ricardo Delgado
+ * Date : 20.12.2020
+ * Description : Controller qui gère la création de compte
+ */
 
 include_once('/Model/userModel.php');
 
@@ -26,41 +30,46 @@ class UserController extends MasterController {
     private function userRegisterAction() {
         $user = new userModel();
 
-        $userNameOK = $passwordOK = false;
+        /**
+         * Variables vérifications bon déroulement validation données
+         * Utilisation de int car problème avec bool
+         */
+        $userNameOK = 0;
+        $OK = 0;
+
+        // Stock le message d'erreur s'il doit y en avoir un
         $userNameFail = $passwordFail = "";
 
+            // Vérification du champs pour l'username
             if(empty($_POST['userName'])) {
-                $userNameFail = 'Champ "Username" requis !';
+                $userNameFail = "Veuillez saisir un nom d'utilisateur";
             } else {
-                $userName = trim($_POST['userName']);
-                $userName = stripslashes($userName);
-                $userName = htmlspecialchars($userName);
+                $userName = $this->testInput($_POST['userName']);
                 if(!preg_match("/^[a-zA-Z0-9é -']*$/", $userName)) {
-                    $userNameFail = 'Caractère spéciaux non accepté dans le champ "Username';
+                    $userNameFail = "Caractère spéciaux non accepté dans le nom d'utilisateur";
                 } else {
-                    $userNameOK = true;
-                    var_dump($userNameOK);
+                    $userNameOK = 1;
                 }
             }
             
-            if(empty($_POST['password'])) {
-                $passwordFail = 'Mot de passe requis';
+            // Vérification du champ pour le mot de passe et la confirmation
+            if(empty($_POST['password']) || empty($_POST['confirmPassword'])) {
+                $passwordFail = 'Veuillez saisir un mot de passe';
             } else {
-                $password = trim($_POST['password']);
-                $password = stripslashes($password);
-                $password = htmlspecialchars($password);
-                if($password != $_POST['confirmPassword']) {
-                    $passwordFail = 'Les mots de passe ne correspondent pas';
+                $password = $this->testInput($_POST['password']);
+                $confirmPassword = $this->testInput($_POST['confirmPassword']);
+                if($password != $confirmPassword) {
+                    $passwordFail = "Les mots de passe ne correspondent pas";
                 } else {
                     $password = password_hash($password, PASSWORD_DEFAULT);
-                    $passwordOK = true;
-                    var_dump($passwordOK);
+                    $OK = 1;
                 }
             }
 
             $errors = array($userNameFail, $passwordFail);
 
-            if($userNameOK & $passwordOK = true) {
+            // Si tout est bon, affiche message de réussite sinon affiche erreurs
+            if($userNameOK & $OK == 1) {
                 $user->createUSer($userName, $_POST['admin'], $password);
                 $view = file_get_contents('view/page/user/succes.php');
 
@@ -78,6 +87,17 @@ class UserController extends MasterController {
 
                 return $content;
             }
+    }
+
+    /**
+     * Méthode pour "sécuriser" les données
+     */
+    public function testInput($data) {
+        $data = stripslashes($data);
+        $data = trim($data);
+        $data = htmlspecialchars($data);
+
+        return $data;
     }
 }
 ?>
