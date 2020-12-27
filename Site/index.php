@@ -49,6 +49,9 @@ class MainController {
             case 'register':
                 $link = new UserController();
                 break;
+            case 'login':
+                $link = new UserController();
+                break;
             default:
                 $link = new HomeController();
                 break;
