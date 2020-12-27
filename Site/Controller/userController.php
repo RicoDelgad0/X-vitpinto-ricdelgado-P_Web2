@@ -27,6 +27,17 @@ class UserController extends MasterController {
         return $content;
     }
 
+    private function loginFormAction() {
+
+        $view = file_get_contents('view/page/user/loginForm.php');
+
+        ob_start();
+        eval('?>' . $view);
+        $content = ob_get_clean();
+
+        return $content;
+    }
+
     private function userRegisterAction() {
         $user = new userModel();
 
@@ -35,7 +46,7 @@ class UserController extends MasterController {
          * Utilisation de int car problème avec bool
          */
         $userNameOK = 0;
-        $OK = 0;
+        $passwordOK = 0;
 
         // Stock le message d'erreur s'il doit y en avoir un
         $userNameFail = $passwordFail = "";
@@ -62,15 +73,15 @@ class UserController extends MasterController {
                     $passwordFail = "Les mots de passe ne correspondent pas";
                 } else {
                     $password = password_hash($password, PASSWORD_DEFAULT);
-                    $OK = 1;
+                    $passwordOK = 1;
                 }
             }
 
             $errors = array($userNameFail, $passwordFail);
 
             // Si tout est bon, affiche message de réussite sinon affiche erreurs
-            if($userNameOK & $OK == 1) {
-                $user->createUSer($userName, $_POST['admin'], $password);
+            if($userNameOK & $passwordOK == 1) {
+                $user->createUSer($userName, $password);
                 $view = file_get_contents('view/page/user/succes.php');
 
                 ob_start();
@@ -87,6 +98,58 @@ class UserController extends MasterController {
 
                 return $content;
             }
+    }
+
+    private function userLoginAction() {
+        $user = new UserModel();
+
+        $username = $password = "";
+        $usernameFail = $passwordFail = "";
+        $usernameOK = $passwordOK = 0;
+
+        if(empty($_POST['userName'])) {
+            $usernameFail = "Veuillez indiquer le nom d'utilisateur";
+
+        } else {
+            $username = $this->testInput($_POST['userName']);
+            $usernameOK = 1;
+        }
+
+        if(empty($_POST['password'])) {
+            $passwordFail = "Veuillez indiquer un mot de passe";
+
+        } else {
+            $password = $this->testInput($_POST['password']);
+            $passwordOK = 1;
+        }
+
+        if($usernameOK && $passwordOK == 1) {
+            $login = $user->userLogin($username);
+            var_dump($login);
+            if($username !== $login[0]['useNickName']) {
+                
+            }
+        }
+
+        /*
+        if($usernameOK && $passwordOK == 1) {
+            $login = $user->userLogin($username);
+
+            if($username !== $login[0]['useNickName']) {
+                $usernameFail = "Identifiant incorrect"; // Provisoire
+            } else if (!password_verify($password, $login[0]['usePassword'])) {
+                $usernameFail = "Mot de passe incorrect";
+            } else {
+                session_start();
+                echo "bien ouej";
+            }
+        }
+        */
+
+
+        //$userInfo = $user->userLogin($_POST['userName']);
+
+        //var_dump($userInfo);
     }
 
     /**
