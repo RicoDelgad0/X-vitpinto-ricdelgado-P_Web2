@@ -36,8 +36,8 @@ class RecipeModel extends Database {
         return $recipes;
     }
 
-    public function addRecipe($recName, $recIngredients, $recPreparation, $recTime, $recDifficulty, $recRegion, $recImage) {
-        $query = "INSERT INTO t_recipes (recName, recIngredients, recPreparation, recTime, recDifficulty, recRegion, recImage) VALUE (:recName, :recIngredients, :recPreparation, :recTime, :recDifficulty, :recRegion, :recImage)";
+    public function addRecipe($recName, $recIngredients, $recPreparation, $recTime, $recDifficulty, $recRegion, $recImage, $idUser) {
+        $query = "INSERT INTO t_recipes (recName, recIngredients, recPreparation, recTime, recDifficulty, recRegion, recImage, idUser) VALUE (:recName, :recIngredients, :recPreparation, :recTime, :recDifficulty, :recRegion, :recImage, :idUser)";
         
         $values = array(
             1 => array(
@@ -73,6 +73,11 @@ class RecipeModel extends Database {
             7 =>  array(
                 'ref' => ':recImage',
                 'var' => $recImage,
+                'type' => PDO::PARAM_STR
+            ),
+            8 => array(
+                'ref' => ':idUSer',
+                'var' => $idUSer,
                 'type' => PDO::PARAM_STR
             ),
         );

@@ -39,5 +39,23 @@ class RecipeController extends MasterController {
         return $content;
     }
 
+    private function addRecipeAction() {
+
+        $recipeList = new recipeModel();
+
+        // VALIDATION DE DONNéES
+        $recName = $_POST['recName'];
+        $recIngredients = $_POST['recIngredient'];
+        $recPreparation = $_POST['recPreparation'];
+        $recTime = $_POST['recTime'];
+        $recDifficulty = $_POST['recDifficulty'];
+        $recRegion = $_POST['recRegion'];
+        $recImage = $_POST['recImage'];
+        $idUser = 3;
+
+        $recipeList->addRecipe($recName, $recIngredients, $recPreparation, $recTime, $recDifficulty, $recRegion, $recImage, $idUser);
+
+        // pas de contenu affichable ici (on ajoute juste une recette)
+    }
 }
 ?>
