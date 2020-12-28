@@ -38,6 +38,14 @@ class UserController extends MasterController {
         return $content;
     }
 
+    private function testInput($data) {
+        $data = stripslashes($data);
+        $data = trim($data);
+        $data = htmlspecialchars($data);
+
+        return $data;
+    }
+
     private function userRegisterAction() {
         $user = new userModel();
 
@@ -107,6 +115,7 @@ class UserController extends MasterController {
         $usernameFail = $passwordFail = "";
         $usernameOK = $passwordOK = 0;
 
+
         if(empty($_POST['userName'])) {
             $usernameFail = "Veuillez indiquer le nom d'utilisateur";
 
@@ -125,42 +134,56 @@ class UserController extends MasterController {
 
         if($usernameOK && $passwordOK == 1) {
             $login = $user->userLogin($username);
-            var_dump($login);
-            if($username !== $login[0]['useNickName']) {
-                
+            $users = $user->allUsers();
+            foreach($users as $key => $value) {
+                foreach($value as $key => $value) {
+                    if($username !== $value) {
+                        $useOK = false;
+                        $usernameFail = "Nom d'utilisateur non existant";
+                    } else {
+                        $useOK = true;
+                    }
+                }
             }
-        }
 
-        /*
-        if($usernameOK && $passwordOK == 1) {
-            $login = $user->userLogin($username);
+            if ($useOK = true) {
+                if (password_verify($password, $login[0]['usePassword'])) {
 
-            if($username !== $login[0]['useNickName']) {
-                $usernameFail = "Identifiant incorrect"; // Provisoire
-            } else if (!password_verify($password, $login[0]['usePassword'])) {
-                $usernameFail = "Mot de passe incorrect";
+                    $user->createUSer($username, $password);
+                    $view = file_get_contents('view/page/user/succes.php');
+
+                    ob_start();
+                    eval('?>' . $view);
+                    $content = ob_get_clean();
+
+                    return $content;
+                } else {
+                    $passwordFail = 'Identifiant ou mot de passe éronné';
+
+                    $errors = array($usernameFail, $passwordFail);
+
+                    $view = file_get_contents('view/page/user/fail.php');
+
+                    ob_start();
+                    eval('?>' . $view);
+                    $content = ob_get_clean();
+
+                    return $content;
+                }
             } else {
-                session_start();
-                echo "bien ouej";
+                $passwordFail = 'Identifiant ou mot de passe éronné';
+
+                $errors = array($usernameFail, $passwordFail);
+
+                $view = file_get_contents('view/page/user/fail.php');
+
+                ob_start();
+                eval('?>' . $view);
+                $content = ob_get_clean();
+
+                return $content;
             }
         }
-        */
-
-
-        //$userInfo = $user->userLogin($_POST['userName']);
-
-        //var_dump($userInfo);
-    }
-
-    /**
-     * Méthode pour "sécuriser" les données
-     */
-    public function testInput($data) {
-        $data = stripslashes($data);
-        $data = trim($data);
-        $data = htmlspecialchars($data);
-
-        return $data;
-    }
+}
 }
 ?>
