@@ -76,8 +76,8 @@ class RecipeModel extends Database {
                 'type' => PDO::PARAM_STR
             ),
             8 => array(
-                'ref' => ':idUSer',
-                'var' => $idUSer,
+                'ref' => ':idUser',
+                'var' => $idUser,
                 'type' => PDO::PARAM_STR
             ),
         );
