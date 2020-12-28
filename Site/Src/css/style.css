@@ -62,5 +62,9 @@ footer {
     height: 100% !important;
 }
 
+li {
+    list-style: none !important;
+}
+
 
 

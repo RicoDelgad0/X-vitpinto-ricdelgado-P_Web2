@@ -15,6 +15,7 @@ class RecipeController extends MasterController {
 
         $recipeList = new recipeModel();
         $allRecipes = $recipeList->getAllRecipes();
+        
 
         $view = file_get_contents('View/page/recipes/list.php');
 
