@@ -88,9 +88,9 @@ class UserController extends MasterController {
             $errors = array($userNameFail, $passwordFail);
 
             // Si tout est bon, affiche message de réussite sinon affiche erreurs
-            if($userNameOK & $passwordOK == 1) {
+            if($userNameOK && $passwordOK == 1) {
                 $user->createUSer($userName, $password);
-                $view = file_get_contents('view/page/user/succes.php');
+                $view = file_get_contents('view/page/user/registerSuccess.php');
 
                 ob_start();
                 eval('?>' . $view);
@@ -113,68 +113,62 @@ class UserController extends MasterController {
 
         $username = $password = "";
         $usernameFail = $passwordFail = "";
-        $usernameOK = $passwordOK = 0;
-
+        $usernameOK = $passwordOK = $loginOK = $missingUsername = $missingPassword = 0;
 
         if(empty($_POST['userName'])) {
-            $usernameFail = "Veuillez indiquer le nom d'utilisateur";
-
+            $missingUsername = 1;
         } else {
             $username = $this->testInput($_POST['userName']);
             $usernameOK = 1;
         }
 
         if(empty($_POST['password'])) {
-            $passwordFail = "Veuillez indiquer un mot de passe";
-
+            $missingPassword = 1;
         } else {
             $password = $this->testInput($_POST['password']);
             $passwordOK = 1;
         }
 
-        if($usernameOK && $passwordOK == 1) {
-            $login = $user->userLogin($username);
+        if($usernameOK && $passwordOK == 1 || $missingUsername == 1 || $missingPassword == 1) {
             $users = $user->allUsers();
             foreach($users as $key => $value) {
                 foreach($value as $key => $value) {
-                    if($username !== $value) {
-                        $useOK = false;
-                        $usernameFail = "Nom d'utilisateur non existant";
-                    } else {
-                        $useOK = true;
+                    if($username == $value) {
+                        $useOK = 1;
                     }
                 }
             }
 
-            if ($useOK = true) {
+            if($useOK = 1) {
+                $login = $user->userLogin($username);
                 if (password_verify($password, $login[0]['usePassword'])) {
-
-                    $user->createUSer($username, $password);
-                    $view = file_get_contents('view/page/user/succes.php');
-
-                    ob_start();
-                    eval('?>' . $view);
-                    $content = ob_get_clean();
-
-                    return $content;
+                    $this->loginOK = 1;
                 } else {
                     $passwordFail = 'Identifiant ou mot de passe éronné';
-
-                    $errors = array($usernameFail, $passwordFail);
-
-                    $view = file_get_contents('view/page/user/fail.php');
-
-                    ob_start();
-                    eval('?>' . $view);
-                    $content = ob_get_clean();
-
-                    return $content;
                 }
             } else {
                 $passwordFail = 'Identifiant ou mot de passe éronné';
+            }
 
-                $errors = array($usernameFail, $passwordFail);
+            $errors = array($usernameFail, $passwordFail);
 
+            if($loginOK = 1) {
+                if(isset($_SESSION)) {
+                    session_destroy();
+                    session_start();
+                } else {
+                    session_start();
+                }
+                $_SESSION['useAdmin'] = $login[0]['useAdmin'];
+                
+                $view = file_get_contents('view/page/user/loginSuccess.php');
+
+                ob_start();
+                eval('?>' . $view);
+                $content = ob_get_clean();
+
+                return $content;
+            } else {
                 $view = file_get_contents('view/page/user/fail.php');
 
                 ob_start();
@@ -184,6 +178,13 @@ class UserController extends MasterController {
                 return $content;
             }
         }
-}
+    }
+
+    private function logoutAction() {
+        session_destroy();
+        $_SESSION = array();
+
+        header("refresh:3; url=index.php?controller=home&action=lastRecipes");
+    }
 }
 ?>
