@@ -35,6 +35,16 @@ class UserModel extends Database {
 
         return $user;
     }
+
+    public function allUsers() {
+        $query = "SELECT * FROM t_user";
+
+        $req = $this->queryPrepareExecute($query, null);
+
+        $users = $this->formData($req);
+
+        return $users;
+    }
 }
 
 ?>
