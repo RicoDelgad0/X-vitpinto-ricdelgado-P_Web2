@@ -52,10 +52,11 @@ class RecipeController extends MasterController {
         $recDifficulty = $_POST['recDifficulty'];
         $recRegion = $_POST['recRegion'];
         $recImage = $_POST['recImage'];
-        $idUser = 3;
+        $idUser = $_SESSION['idUser'];
 
         $recipeList->addRecipe($recName, $recIngredients, $recPreparation, $recTime, $recDifficulty, $recRegion, $recImage, $idUser);
 
+        header("refresh:0; url=index.php?controller=home&action=lastRecipes");
         // pas de contenu affichable ici (on ajoute juste une recette)
     }
 }
