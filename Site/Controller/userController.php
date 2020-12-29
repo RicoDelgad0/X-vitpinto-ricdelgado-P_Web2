@@ -160,6 +160,8 @@ class UserController extends MasterController {
                     session_start();
                 }
                 $_SESSION['useAdmin'] = $login[0]['useAdmin'];
+                $_SESSION['idUser'] = $login[0]['idUser'];
+                $_SESSION['loggedin'] = true;
                 
                 $view = file_get_contents('view/page/user/loginSuccess.php');
 
@@ -184,7 +186,7 @@ class UserController extends MasterController {
         session_destroy();
         $_SESSION = array();
 
-        header("refresh:3; url=index.php?controller=home&action=lastRecipes");
+        header("refresh:0; url=index.php?controller=home&action=lastRecipes");
     }
 }
 ?>

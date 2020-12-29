@@ -1,6 +1,4 @@
-<!-- TODO: Vérifier que les recettes sont bien ajoutée à la DB -->
 <!-- TODO: Ajouter les commentaires et l'entête de l'Etml -->
-
 <div class="d-flex justify-content-center mt-3">
         <h1>Ajouter une Recette</h1>
     </div>
@@ -11,7 +9,7 @@
 
     <div class="addRecipeFormContainer mt-3 d-flex justify-content-center">
         <!-- Début du formulaire -->
-        <form class="addRecipeForm" action="/index.php?controller=recipes&action=addRecipe" method="POST" style="width : 40% !important;" >
+        <form class="addRecipeForm" action="index.php?controller=recipes&action=addRecipe" method="POST" style="width : 40% !important;" >
         <div class="form-group">
             <strong><label for="recName">Nom de la Recette : </label></strong>
             <input type="text" class="form-control" id="recName" name="recName" placeholder="Ex. Poulet aux carottes">
