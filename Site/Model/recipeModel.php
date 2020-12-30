@@ -88,7 +88,7 @@ class RecipeModel extends Database {
     }
 
     public function getLatestRecipes() {
-        $query = "SELECT * FROM t_recipes ORDER BY IdRecipes DESC";
+        $query = "SELECT * FROM t_recipes ORDER BY IdRecipes DESC LIMIT 4";
 
         $req = $this->queryPrepareExecute($query, null);
 
