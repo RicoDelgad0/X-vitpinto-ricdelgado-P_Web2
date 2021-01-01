@@ -68,7 +68,7 @@ class MainController {
         $content = $currentPage->display();
 
         include(dirname(__FILE__) . '/View/head.html');
-        include(dirname(__FILE__) . '/View/menu.html');
+        include(dirname(__FILE__) . '/View/menu.php');
         echo $content;
         include(dirname(__FILE__) . '/View/footer.html');
     }

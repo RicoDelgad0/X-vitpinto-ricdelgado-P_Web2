@@ -37,23 +37,13 @@ class HomeController extends MasterController {
     }
 
     private function addRecipeAction() {
-        if(!isset($_SESSION)) {
-            echo 'it works';
-        } else if($_SESSION['useAdmin'] == 1) {
-            echo 'je m affiche';
-        }
-        /*
-        if($_SESSION['useAdmin'] == 1) {
-            $view = file_get_contents('view/page/home/addRecipe.php');
+        $view = file_get_contents('view/page/home/addRecipe.php');
 
         ob_start();
         eval('?>' . $view);
         $content = ob_get_clean();
 
         return $content;
-        } else {
-            echo 'oupsi';
-        }*/
     }
 
     private function registerFormAction() {
