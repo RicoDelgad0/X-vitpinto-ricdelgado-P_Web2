@@ -1,3 +1,9 @@
+<!--
+Auteurs : Vitor Silva & Ricardo Delgado
+Date : 02.01.21
+Description : Contenu de la page de connexion
+-->
+
 <h1 class="d-flex mt-5 justify-content-center">Connexion</h1>
 
     <div class="descriptionFormContainer d-flex justify-content-center flex-column mt-3">

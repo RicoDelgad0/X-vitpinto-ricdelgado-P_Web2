@@ -1,4 +1,9 @@
 <?php
+/**
+ * Auteur : Vitor Silva & Ricardo Delgado
+ * Date : 02.01.21
+ * Description : Controleur lié aux recettes
+ */
 
 include_once 'Model/recipeModel.php';
 
@@ -44,7 +49,6 @@ class RecipeController extends MasterController {
 
         $recipeList = new recipeModel();
 
-        // VALIDATION DE DONNéES
         $recName = $_POST['recName'];
         $recIngredients = $_POST['recIngredient'];
         $recPreparation = $_POST['recPreparation'];
