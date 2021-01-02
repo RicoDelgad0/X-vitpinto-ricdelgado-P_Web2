@@ -1,4 +1,9 @@
-<!-- TODO: Ajouter les commentaires et l'entête de l'Etml -->
+<!--
+Auteurs : Vitor Silva & Ricardo Delgado
+Date : 02.01.21
+Description : Contenu de la page d'ajout d'une recette
+-->
+
 <div class="d-flex justify-content-center mt-3">
         <h1>Ajouter une Recette</h1>
     </div>

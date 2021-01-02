@@ -1,4 +1,9 @@
 <?php
+/**
+ * Auteur : Vitor Silva & Ricardo Delgado
+ * Date : 02.01.21
+ * Description : Modèle gèrant la création et l'utilisation des utilisateurs
+ */
 
 include_once('database.php');
 
