@@ -1,4 +1,10 @@
 <?php
+/**
+ * Auteur : Vitor Silva & Ricardo Delgado
+ * Date : 02.01.21
+ * Description : Controleur de la page d'accueil
+ */
+
 include_once 'Model/recipeModel.php';
 
 session_start();

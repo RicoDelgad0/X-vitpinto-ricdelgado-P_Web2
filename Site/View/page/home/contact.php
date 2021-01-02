@@ -1,5 +1,10 @@
+<!--
+Auteurs : Vitor Silva & Ricardo Delgado
+Date : 02.01.21
+Description : Contenu de la page de contact
+-->
+
 <!-- TODO: vérifier que l'envoie de mail fonctionne et qu'il est okay en MVC  -->
-<!-- TODO: Ajouter l'entête de l'ETML et les commentaires -->
 
 <h1 class="d-flex mt-5 justify-content-center">Contactez nous !</h1>
 

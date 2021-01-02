@@ -1,3 +1,9 @@
+<!--
+Auteurs : Vitor Silva & Ricardo Delgado
+Date : 02.01.21
+Description : Contenu de la page de succès à la connexion
+-->
+
 <h1 class="d-flex mt-5 justify-content-center">Connexion Réussie !</h1>
     <div class="d-flex justify-content-center w-100">
         <div class="d-flex flex-column justify-content-center border rounded w-25 bg-dark text-light">
