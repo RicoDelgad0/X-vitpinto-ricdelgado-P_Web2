@@ -13,6 +13,7 @@ Description : Contenu de la page d'erreur à la connexion
     <div class="d-flex justify-content-center w-100">
         <div class="d-flex flex-column justify-content-center border rounded w-25 bg-dark text-light">
             <?php
+            // Foreach qui affiche toutes les erreurs s'il y en a
             foreach($errors as $error) {
                 if(!empty($error)) {
                     echo '<div class="form-group">';

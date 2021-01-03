@@ -7,8 +7,8 @@
 $CONFIG = array(
     "database" => array(
         "dbName" => "db_redwire",
-        "userName" => "root",
-        "password" => "root",
+        "userName" => "Jul",
+        "password" => "Ovni",
         "host" => "localhost",
         "port" => "3306",
         "charset" => "utf8"

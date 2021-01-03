@@ -9,6 +9,7 @@ Description : Contenu de la page de succès à la création de compte
         <div class="d-flex flex-column justify-content-center border rounded w-25 bg-dark text-light">
             <p class="mt-3 ml-3">Vous serez redirigé(e) dans un instant</p>
             <?php
+            // Renvoie sur la page de connexion après un bout de temps
             header("refresh:2; url=index.php?controller=login&action=loginForm")
             ?>
         </div>
