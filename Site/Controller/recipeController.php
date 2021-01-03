@@ -16,6 +16,9 @@ class RecipeController extends MasterController {
         return call_user_func(array($this, $action));
     }
 
+    /**
+     * Prend toutes les recettes et affiche la bonne page
+     */
     private function allRecipesAction() {
 
         $recipeList = new recipeModel();
@@ -31,6 +34,9 @@ class RecipeController extends MasterController {
         return $content;
     }
 
+    /**
+     * Prend une seul recette et affiche la bonne page
+     */
     private function oneRecipeAction() {
 
         $recipeList = new recipeModel();
@@ -45,6 +51,9 @@ class RecipeController extends MasterController {
         return $content;
     }
 
+    /**
+     * Prend les valeurs et ajoute une recette à la Db
+     */
     private function addRecipeAction() {
 
         $recipeList = new recipeModel();

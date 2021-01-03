@@ -7,9 +7,11 @@
 
 include_once('database.php');
 
-
 class UserModel extends Database {
 
+    /**
+     * Création d'utilisateur dans la DB
+     */
     public function createUser($useNickName, $usePassword) {
         $query = "INSERT INTO t_user (useNickName, usePassword) VALUE (:useNickName, :usePassword)";
         
@@ -31,6 +33,9 @@ class UserModel extends Database {
         $this->unsetData($req);
     }
 
+    /**
+     * Récupération utilisateur dans DB
+     */
     public function userLogin($userName) {
         $query = "SELECT * FROM t_user WHERE useNickName = '$userName'";
 
@@ -41,6 +46,9 @@ class UserModel extends Database {
         return $user;
     }
 
+    /**
+     * Récupération tous les utilisateurs DB
+     */
     public function allUsers() {
         $query = "SELECT * FROM t_user";
 

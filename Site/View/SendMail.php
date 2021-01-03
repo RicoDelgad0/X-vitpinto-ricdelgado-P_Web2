@@ -5,15 +5,10 @@
  * Description : Page pour faire fonctionner le formulaire de contact par mail
  **/ 
 
-
-// TODO: Est-ce que ceci ne serait pas plus pertinent dans le controller ou dans model ?
-
-
 // On récupère les informations entrées dans le formulaire et les envoie sous forme de mail au 'support'
 if(isset($_POST["userMail"]) && isset($_POST["userProblem"])){
     mail("ricprt2000@gmail.com", "Support Letche", $_POST["userProblem"]. 'From : $_POST["userMail"]');
 }
 
-header("Location : http://localhost:8080/view/homePage.php");
-
+header("refresh:0; url=index.php?controller=home&action=lastRecipes");
 ?>

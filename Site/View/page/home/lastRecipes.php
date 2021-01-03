@@ -4,10 +4,6 @@
     Description : Contenu de la page d'acceuil
 -->
 
-
-<!-- TODO: Faire en sorte de récupérer les 3 ou 4 dernières recettes avec un foreach de manière automatique -->
-<!-- TODO: Ajouter des commentaires -->
-
 <div class="d-flex justify-content-center mt-5">
   <h1 id="indexTitle" class="font-weight-bold display-1">El Letche</h1> <!-- Titre du site -->
 </div>
@@ -22,7 +18,7 @@
   </h4>
 </div>
 
-<!-- Cartes avec les dernières recette + lien vers toutes les recettes -->
+<!-- Cartes avec les dernières recette + lien vers détails -->
 <div id="indexRecipiesContentor" class="d-flex flex-row justify-content-around m-5">
   <?php
   foreach ($recipes as $recipe) {

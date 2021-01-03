@@ -16,6 +16,9 @@ class UserController extends MasterController {
         return call_user_func(array($this, $action));
     }
 
+    /**
+     * Affiche page d'enregistrement
+     */
     private function registerFormAction() {
 
         $view = file_get_contents('view/page/home/registerForm.php');
@@ -27,6 +30,9 @@ class UserController extends MasterController {
         return $content;
     }
 
+    /**
+     * Affiche page de connexion
+     */
     private function loginFormAction() {
 
         $view = file_get_contents('view/page/user/loginForm.php');
@@ -38,6 +44,9 @@ class UserController extends MasterController {
         return $content;
     }
 
+    /**
+     * Fonction anti injection code
+     */
     private function testInput($data) {
         $data = stripslashes($data);
         $data = trim($data);
@@ -46,6 +55,9 @@ class UserController extends MasterController {
         return $data;
     }
 
+    /**
+     * validation de données + création utilisateur
+     */
     private function userRegisterAction() {
         $user = new userModel();
 
@@ -108,41 +120,51 @@ class UserController extends MasterController {
             }
     }
 
+    /**
+     * Connexion au site
+     */
     private function userLoginAction() {
         $user = new UserModel();
 
+        // Variables stockage username + password
         $username = $password = "";
+        // Variables stockage erreurs
         $usernameFail = $passwordFail = "";
+        // Variables vérification 
         $usernameOK = $passwordOK = $loginOK = $missingUsername = $missingPassword = 0;
 
+        // Vérifie champ utilisateur vide ou pas
         if(empty($_POST['userName'])) {
-            $missingUsername = 1;
+            $missingUsername = 1; // vide
         } else {
             $username = $this->testInput($_POST['userName']);
-            $usernameOK = 1;
+            $usernameOK = 1; // pas vide
         }
 
+        // Vérifie si mot de passe vide ou pas
         if(empty($_POST['password'])) {
-            $missingPassword = 1;
+            $missingPassword = 1; // Vide
         } else {
             $password = $this->testInput($_POST['password']);
-            $passwordOK = 1;
+            $passwordOK = 1; // pas vide
         }
 
+        // Véridie que l'utilisateur existe dans la DB
         if($usernameOK && $passwordOK == 1 || $missingUsername == 1 || $missingPassword == 1) {
             $users = $user->allUsers();
             foreach($users as $key => $value) {
                 foreach($value as $key => $value) {
                     if($username == $value) {
-                        $useOK = 1;
+                        $useOK = 1; // utilisateur existe
                     }
                 }
             }
 
+            // Vérifie mot de passe
             if($useOK = 1) {
                 $login = $user->userLogin($username);
                 if (password_verify($password, $login[0]['usePassword'])) {
-                    $this->loginOK = 1;
+                    $this->loginOK = 1; // mot de passe correcte
                 } else {
                     $passwordFail = 'Identifiant ou mot de passe éronné';
                 }
@@ -150,15 +172,18 @@ class UserController extends MasterController {
                 $passwordFail = 'Identifiant ou mot de passe éronné';
             }
 
-            $errors = array($usernameFail, $passwordFail);
+            $errors = array($usernameFail, $passwordFail); // tableaux d'erreurs
 
+            // Si la connexion peut se faire
             if($loginOK = 1) {
+                // Si une session existe
                 if(isset($_SESSION)) {
                     session_destroy();
                     session_start();
                 } else {
                     session_start();
                 }
+                // Variables de session
                 $_SESSION['useAdmin'] = $login[0]['useAdmin'];
                 $_SESSION['idUser'] = $login[0]['idUser'];
                 $_SESSION['loggedin'] = true;
@@ -182,10 +207,14 @@ class UserController extends MasterController {
         }
     }
 
+    /**
+     * Détruit la session et les variables de session
+     */
     private function logoutAction() {
         session_destroy();
         $_SESSION = array();
 
+        // Renvoie sur la page principale directement
         header("refresh:0; url=index.php?controller=home&action=lastRecipes");
     }
 }

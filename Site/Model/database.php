@@ -40,7 +40,9 @@ class Database {
         }
     }
 
-
+    /**
+     * Prépare les données
+     */
     protected function queryPrepareExecute($query, $binds) {
         $req = $this->connector->prepare($query);
 
@@ -59,13 +61,13 @@ class Database {
         
     }
 
+    /**
+     * Prépare données tableau associatif
+     */
     protected function formData($req) {
         $recipes = $req->fetchAll(PDO::FETCH_ASSOC);
 
         return $recipes;
     }
-
-
-
 }
 ?>

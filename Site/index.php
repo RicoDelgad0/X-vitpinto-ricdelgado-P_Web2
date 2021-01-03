@@ -21,6 +21,9 @@ class MainController {
      */
     public function dispatch() {
 
+        /**
+         * Si aucun controller ne se trouve dans le get, en défini un par défaut
+         */
         if(!isset($_GET['controller'])) {
             $_GET['controller'] = 'home';
             $_GET['action'] = 'lastRecipes';
@@ -36,6 +39,9 @@ class MainController {
      */
     protected function menuSelected() {
 
+        /**
+         * Switch qui gère quel controller on doit récupérer
+         */
         switch($_GET['controller']) {
             case 'home':
                 $link = new HomeController();
