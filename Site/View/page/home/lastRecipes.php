@@ -11,10 +11,9 @@
 <div id="homePageText" class="d-flex mt-4 container-md">
   <!-- Présentation du site internet -->
   <h4>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis fugit, enim molestiae praesentium eveniet,
-    recusandae et error beatae facilis ex harum consequuntur, quia pariatur non. Doloribus illo, ullam blanditiis ab.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis fugit, enim molestiae praesentium eveniet,
-    recusandae et error beatae facilis ex harum consequuntur, quia pariatur non. Doloribus illo, ullam blanditiis ab.
+    Bienvenue sur El Letche, le site de cuisine numéro 1 en Suisse romande ! Laissez vous porter par les effluves délicieux des plus de 5000 plats
+    recensés sur El Letche ! Visitez les quatre coins du monde sans même quitter votre cuisine en suivant les marches à suivre des recettes et sentez
+    frétiller vos papilles le temps d'un repas. El Letche, La cuisine que vous méritez !
   </h4>
 </div>
 
