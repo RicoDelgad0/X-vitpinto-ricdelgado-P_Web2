@@ -4,7 +4,6 @@
     Description : Contenu différent à afficher dans la page register
 -->
 
-<!-- TODO: Ajout de commentaires -->
 <h1 class="d-flex mt-5 justify-content-center">Création de compte</h1>
 
     <div class="descriptionFormContainer d-flex justify-content-center flex-column mt-3">

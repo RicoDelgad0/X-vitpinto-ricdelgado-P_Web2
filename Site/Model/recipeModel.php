@@ -13,9 +13,11 @@
 
  include_once('database.php');
  
-
 class RecipeModel extends Database {
 
+    /**
+     * Récupère toutes les recettes
+     */
     public function getAllRecipes() {
         $query = "SELECT * FROM t_recipes";
 
@@ -26,6 +28,9 @@ class RecipeModel extends Database {
         return $recipes;
     }
 
+    /**
+     * Récupère une recette
+     */
     public function getOneRecipe($id) {
         $query = "SELECT * FROM t_recipes WHERE idRecipes = $id";
 
@@ -36,6 +41,9 @@ class RecipeModel extends Database {
         return $recipes;
     }
 
+    /**
+     * Ajoute une recette à la DB
+     */
     public function addRecipe($recName, $recIngredients, $recPreparation, $recTime, $recDifficulty, $recRegion, $recImage, $idUser) {
         $query = "INSERT INTO t_recipes (recName, recIngredients, recPreparation, recTime, recDifficulty, recRegion, recImage, idUser) VALUE (:recName, :recIngredients, :recPreparation, :recTime, :recDifficulty, :recRegion, :recImage, :idUser)";
         
@@ -87,6 +95,9 @@ class RecipeModel extends Database {
         $this->unsetData($req);
     }
 
+    /**
+     * Récupère 4 dernières recettes
+     */
     public function getLatestRecipes() {
         $query = "SELECT * FROM t_recipes ORDER BY IdRecipes DESC LIMIT 4";
 

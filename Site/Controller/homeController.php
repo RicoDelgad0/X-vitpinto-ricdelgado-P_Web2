@@ -17,6 +17,9 @@ class HomeController extends MasterController {
         return call_user_func(array($this, $action));
     }
 
+    /**
+     * Prend les dernières recettes et affiche la bonne page
+     */
     private function lastRecipesAction() {
         $catchRecipes = new RecipeModel();
         $recipes = $catchRecipes->getLatestRecipes();
@@ -31,6 +34,9 @@ class HomeController extends MasterController {
          return $content;
     }
 
+    /**
+     * prend la page contact et l'affiche
+     */
     private function contactAction() {
          
         $view = file_get_contents('view/page/home/contact.php');
@@ -42,6 +48,9 @@ class HomeController extends MasterController {
         return $content;
     }
 
+    /**
+     * Prend la page ajout recette et l'affiche
+     */
     private function addRecipeAction() {
         $view = file_get_contents('view/page/home/addRecipe.php');
 
@@ -52,6 +61,9 @@ class HomeController extends MasterController {
         return $content;
     }
 
+    /**
+     * Prend la page enregistrement et l'affiche
+     */
     private function registerFormAction() {
 
         $view = file_get_contents('view/page/home/registerForm.php');
