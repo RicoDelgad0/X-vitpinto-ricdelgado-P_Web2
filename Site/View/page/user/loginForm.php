@@ -7,8 +7,8 @@ Description : Contenu de la page de connexion
 <h1 class="d-flex mt-5 justify-content-center">Connexion</h1>
 
     <div class="descriptionFormContainer d-flex justify-content-center flex-column mt-3">
-        <p class="text-muted">Connectez-vous sur notre site pour garder une trace de vos recettes à l'avenir !</p>
-        <p class="text-muted">Pas encore de compte ? Inscrivez-vous <a href="index.php?controller=register&action=registerForm">ICI</a></p>
+        <p>Connectez-vous sur notre site pour garder une trace de vos recettes à l'avenir !</p>
+        <p>Pas encore de compte ? Inscrivez-vous <a href="index.php?controller=register&action=registerForm">ICI</a></p>
     </div>
 
     <div class="d-flex justify-content-center w-100">

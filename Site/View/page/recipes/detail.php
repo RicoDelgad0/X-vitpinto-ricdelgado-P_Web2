@@ -18,7 +18,7 @@
             <?php echo $recipe[0]['recPreparation'] ?> <!-- Préparation de la recette -->
             <h6 class="mt-3">Temps de préparation</h6>
             <?php echo $recipe[0]['recTime'] . ' minutes de préparation';?>
-            <h6>Difficultée</h6>
+            <h6>Difficulté</h6>
             <?php echo $recipe[0]['recDifficulty'];?>
         </p>
     </div>

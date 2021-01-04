@@ -7,8 +7,8 @@
 <h1 class="d-flex mt-5 justify-content-center">Création de compte</h1>
 
     <div class="descriptionFormContainer d-flex justify-content-center flex-column mt-3">
-        <p class="text-muted">Connectez-vous sur notre site pour garder une trace de vos recettes à l'avenir !</p>
-        <p class="text-muted">Déjà un compte ? Connectez-vous <a href="index.php?controller=login&action=loginForm">ICI</a></p>
+        <p>Connectez-vous sur notre site pour garder une trace de vos recettes à l'avenir !</p>
+        <p>Déjà un compte ? Connectez-vous <a href="index.php?controller=login&action=loginForm">ICI</a></p>
     </div>
 
     <div class="d-flex justify-content-center w-100">
