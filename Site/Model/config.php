@@ -6,7 +6,7 @@
  */
 $CONFIG = array(
     "database" => array(
-        "dbName" => "db_redwire",
+        "dbName" => "db_letche",
         "userName" => "Jul",
         "password" => "Ovni",
         "host" => "localhost",
